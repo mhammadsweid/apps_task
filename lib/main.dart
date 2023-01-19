@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'paginated_view.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context , child) {
+      builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'First Method',
@@ -26,11 +28,10 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const HomeScreen(),
+      child: const GetData(),
     );
   }
-  }
-
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,7 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               MaterialButton(
                 onPressed: () {
-                  Get.to(() => UserDetailListScreen());
+                  // Get.to(() => UserDetailListScreen());
+                  Get.to(() => GetData());
                 },
                 child: Text("fetch_data"),
               )

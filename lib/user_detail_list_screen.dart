@@ -14,7 +14,8 @@ class _UserDetailListScreenState extends State<UserDetailListScreen> {
   bool isLoading = true;
   List<User> users = [];
   int limit = 10;
-  ScrollController? scrollController;
+  PageController? _controller;
+  int currentPage = 1;
 
   _scrollListener() async {
     limit += 10;
@@ -37,6 +38,7 @@ class _UserDetailListScreenState extends State<UserDetailListScreen> {
   }
 
   getUsers() async {
+    _controller = PageController(initialPage: currentPage);
     users = await UserController().getUsers(limit: limit);
     setState(() {
       isLoading = false;
@@ -56,6 +58,7 @@ class _UserDetailListScreenState extends State<UserDetailListScreen> {
         subtitle: Text(users[i].title.toString()),
       ));
     }
+    
     return ListView(
       children: children,
     );

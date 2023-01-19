@@ -4,9 +4,10 @@ import 'package:http/http.dart' as http;
 import '../dialogs/error_dialog.dart';
 import 'constants.dart';
 
-Future<http.Response> sendToApiGet({int limit = 10}) async {
+Future<http.Response> sendToApiGet({int limit = 10, int page = 1}) async {
   return http.get(
-    Uri.parse("$baseUrl?limit=$limit"),
+    // Uri.parse("$baseUrl?limit=$limit&page=$page"),
+    Uri.parse("https://dummyapi.io/data/v1/user?page=$page&limit=$limit"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       'Accept': 'application/json; charset=UTF-8',

@@ -5,9 +5,9 @@ import 'package:apis_getx_app/utils/api.dart';
 import '../models/user_model.dart';
 
 class UserController {
-  Future<List<User>> getUsers({int limit = 10}) async {
+  Future<List<User>> getUsers({int limit = 10, int page = 1}) async {
     List<User> users = [];
-    final response = await Services().getUsers(limit: limit);
+    final response = await Services().getUsers(limit: limit, page: page);
     try {
       final decodedData = jsonDecode(response.body);
       if (handleApiResponse(response)) {
